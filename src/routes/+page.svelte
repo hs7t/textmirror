@@ -1,37 +1,44 @@
 <script>
-    import Selector from "./Selector.svelte";
+	import Selector from './InlineSelector.svelte';
 </script>
 
 <main>
-    <h1>Text mirror</h1>
-    <Selector form={{
-        "message": {
-            "name": "Text",
-            "lead": "Mirror",
-            "type": "text"
-        },
-        "recipient": {
-            "name": "Recipient",
-            "lead": "to",
-            "type": "select",
-            "options": [
-                "Yourself",
-                "Anyone"
-            ]
-        },
-        "time" : {
-            "name": "Time",
-            "type": "tangent_select",
-            "options": {
-                "specific": {
-                    "name": "At a specific time",
-                    "type": "date"
-                },
-                "within_interval": {
-                    "name": "Sometime within an interval",
-                    "type": "date_range"
-                }
-            }
-        },
-    }}></Selector>
+	<h1>Text mirror</h1>
+	<Selector
+		form={{
+			message: {
+				name: 'text',
+				lead: 'Mirror',
+				type: 'text'
+			},
+			recipient: {
+				name: 'recipient',
+				lead: 'to',
+				type: 'select',
+				options: {
+					yourself: {
+						name: 'yourself'
+					},
+					message_jar: {
+						name: 'the message jar'
+					}
+				}
+			},
+			time: {
+				name: 'time',
+				lead: 'at',
+				type: 'tangent_select',
+				options: {
+					specific: {
+						name: 'a specific time',
+						type: 'datetime-local'
+					},
+					within_interval: {
+						name: 'any time within an interval',
+						type: 'date_range'
+					}
+				}
+			}
+		}}
+	></Selector>
 </main>
