@@ -13,8 +13,12 @@
 <div>
 	{#each getEntries(form) as [key, input]}
 		<span>{input.lead}</span>
+
+		<!-- Input type: Text -->
 		{#if input.type === 'text'}
 			<input type="text" id={key} placeholder={input.name} />
+
+		<!-- Input type: Select -->
 		{:else if ((input.type === 'select') || (input.type === 'tangent_select'))}
 			<select bind:value={formAnswer[key]} id={key}>
 				<option disabled value="">{input.name}</option>
@@ -23,19 +27,12 @@
 					<option value={option_key}>{option.name}</option>
 				{/each}
 			</select>
-
-			{#if input.type === 'tangent_select'}
-				{#each getEntries(input.options) as [tangent_key, tangent]}
-					{#if formAnswer[key] == tangent_key} 
-						{#if tangent.type === 'datetime-local'} 
-							<input type="datetime-local">
-						{:else if tangent.type === 'date_range'}
-							<DateRangePicker 
-								bind:date_range={placeholder} 
-							/>
-						{/if}
-					{/if}
-				{/each}
+			{#if (formAnswer[key] in input.options)}
+				{#if input.type === 'date_range'} 
+					<DateRangePicker 
+						bind:date_range={formAnswer[key][formAnswer[key]]} 
+					/>
+				{/if}
 			{/if}
 		{/if}
 	{/each}

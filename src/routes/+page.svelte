@@ -7,34 +7,30 @@
 	<Selector
 		form={{
 			message: {
-				name: 'text',
-				lead: 'Mirror',
+				label: 'text',
+				hint: 'Mirror',
 				type: 'text'
 			},
 			recipient: {
-				name: 'recipient',
-				lead: 'to',
+				label: 'recipient',
+				hint: 'to',
 				type: 'select',
 				options: {
-					yourself: {
-						name: 'yourself'
-					},
-					message_jar: {
-						name: 'the message jar'
-					}
+					yourself: { label: 'yourself' },
+					message_jar: { label: 'the message jar' }
 				}
 			},
 			time: {
-				name: 'time',
-				lead: 'at',
+				label: 'time',
+				hint: 'at',
 				type: 'tangent_select',
 				options: {
 					specific: {
-						name: 'a specific time',
+						label: 'a specific time',
 						type: 'datetime-local'
 					},
 					within_interval: {
-						name: 'any time within an interval',
+						label: 'any time within an interval',
 						type: 'date_range'
 					}
 				}
